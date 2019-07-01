@@ -28,7 +28,7 @@
     <div class="card-product-perant col-lg-2 col-md-3 col-sm-6 col-6 mt-3 mt-lg-5">
         <div class="card-product">
             <div class="overlaye rounded shadow-sm">
-                <div class="card-product-image " style="background-image: url('http://192.168.1.114:8000{{ product.img.url }}')">
+                <div class="card-product-image " style="background-image: url('https://django-sdeen-store.herokuapp.com{{ product.img.url }}')">
                     {% if product.discount_set.first %}
                     <span class="discount">حسم {{ product.discount_set.first.percentage }}%</span>  
                     {% endif %}

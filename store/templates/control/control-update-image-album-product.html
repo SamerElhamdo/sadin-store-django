@@ -26,10 +26,10 @@
                     {% for image in product.image_set.all %}
 
                     {% if image == product.image_set.first %}
-                    <div class="card-slider carousel-item active" style="background-image: url('http://192.168.1.114:8000{{ product.image_set.first.image.url }}')">
+                    <div class="card-slider carousel-item active" style="background-image: url('https://django-sdeen-store.herokuapp.com{{ product.image_set.first.image.url }}')">
                     </div>
                     {% else %}
-                    <div class="card-slider carousel-item" style="background-image: url('http://192.168.1.114:8000{{ image.image.url }}')">
+                    <div class="card-slider carousel-item" style="background-image: url('https://django-sdeen-store.herokuapp.com{{ image.image.url }}')">
                     </div>
                     {% endif %}
 
@@ -55,7 +55,7 @@
                 <h4>حدد صوراً لحذفها:</h4>
                 <select multiple="multiple" name="delete_list" class="image-picker show-html row">
                     {% for image in product.image_set.all %}
-                        <option data-img-src="http://192.168.1.114:8000{{ image.image.url }}" data-img-width="200px" value="{{ image.id }}">Cute Kitten {{ image.id }}</option>
+                        <option data-img-src="https://django-sdeen-store.herokuapp.com{{ image.image.url }}" data-img-width="200px" value="{{ image.id }}">Cute Kitten {{ image.id }}</option>
                     {% endfor %}
                 </select>
                 <div >

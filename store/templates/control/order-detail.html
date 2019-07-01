@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h3 class="text-center mt-5"> {{ title }}</h3>
+<div class="row mt-5">
+
+
+    <div class="col-lg-4 col-md-6 col-sm-8 col-8 m-auto">
+        <div class="card-order mb-3 ">
+            <div class="overlaye rounded shadow-sm">
+                <p><span> الاسم : </span>{{ order.full_name }}</p>
+                <p><span> رقم الهاتف : </span>{{ order.phonenumber }}</p>
+                {% if order.color %}
+                <p><span>اللون : </span>{{ order.color }}</p>
+                {% endif %}
+                {% if order.size %}
+                <p><span>اللون : </span>{{ order.size }}</p>
+                {% endif %}
+                <p><span>التاريخ : </span>{{ order.date|date:"d-n-Y" }} في الساعة {{ order.date|time:"g:iA" }}</p>
+                
+                
+
+                <div class="card-product-image-admin " style="background-image: url('http://192.168.1.114:8000{{ order.product.img.url }}')">
+                <img src="http://192.168.1.114:8000{{ order.product.img.url }}" width="100%" height="auto">
+                </div>
+                <p><span>أسم المنتج : </span>{{ order.product.title }}</p>
+                <p><span> سعر المنتج : </span>{{ order.product.price }}</p>
+                {% if order.product.discount_set.first %}
+                <p><span> قيمة الحسم : </span>{{ order.product.discount_set.first.percentage }}</p>
+                {% endif %}
+                
+                {% if order.accept %}
+                <a href="{% url 'list_history_orders' %}" class="link-buy bg-danger">تم التسليم العودة الى الطلبات الجديدة </a>
+                {% else %}
+                <a href="{% url 'order_accept' order.id %}" class="link-buy bg-danger">تأكيد التسليم</a>  
+                {% endif %}
+                    
+                
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

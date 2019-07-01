@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h3 class="text-center mt-5"> {{ title }}</h3>
+<div class="card" style="width: 20rem;">
+    <img class="card-img-top" src="{{ product.img.url }}" alt="Card image cap">
+    <div class="card-block">
+        <h4 class="card-title">{{ product.title }}</h4>
+        <h4 class="card-title">{{ product.price }}</h4>
+    
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+
+{% if product.image_set.all %}
+{% for img in product.image_set.all %}
+<img class="card-img-top" src="{{ product.img.url }}" alt="Card image cap">
+{% endfor %}
+{% endif %}
+
+    
+{% endblock %}

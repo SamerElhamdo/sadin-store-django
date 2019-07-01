@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block search %}
+<form class="form-inline mr-auto" method="GET">
+    <input class="form-control mr-sm-2" name="q" type="search" placeholder="بحث عن المنتجات" aria-label="Search" value="{{ request.GET.q }}">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">بحث</button>
+</form>
+{% endblock %}
+    
+
+{% block content %}
+<h3 class="text-center mt-5"> {{ title }}</h3>
+
+
+{% if request.GET.q %}
+    {% if products %}
+<h5 class="text-center mt-3"> نتائج البحث عن <span class="text-danger">"{{ request.GET.q }}"</span></h5>
+    {% else %}
+<h5 class="text-center mt-3"> لا يوجد نتائج في البحث عن <span class="text-danger">"{{ request.GET.q }}"</span></h5>
+    {% endif %}
+{% endif %}
+
+
+
+    
+<div class="row">
+    {% for product in products %}
+    <div class="card-product-perant col-lg-2 col-md-3 col-sm-6 col-6 mt-3 mt-lg-5">
+        <div class="card-product">
+            <div class="overlaye rounded shadow-sm">
+                <div class="card-product-image " style="background-image: url('http://192.168.1.114:8000{{ product.img.url }}')">
+                    {% if product.discount_set.first %}
+                    <span class="discount">حسم {{ product.discount_set.first.percentage }}%</span>  
+                    {% endif %}
+                        
+                </div>
+                <a href="{% url 'order_form' product.id %}" class="link-buy">أطلبها الاّن</a>
+                
+                
+            </div>
+            <p>{{ product.title }}</p>
+
+
+            
+            {% if product.discount_set.first %}
+            <p class="price-discount"><span class="new-price  text-danger font-weight-bold">{{ product.discount_set.first.percentage }}ر.س</span> - <span class="price text-secondary" style="text-decoration: line-through;">{{ product.price }}ر.س</span> </p>
+            {% else %}
+            <p><span>{{ product.price }}ر.س</span></p>
+            {% endif %}  
+        </div>
+
+
+
+
+    </div>
+
+    {% endfor %}
+</div>
+
+
+{% endblock %}
+

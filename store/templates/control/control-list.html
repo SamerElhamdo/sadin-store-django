@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block content %}
+<h3 class="text-center mt-5"> {{ title }}</h3>
+<div class="row">
+    {% for product in products %}
+    <div class="col-lg-3 col-md-4 col-sm-6 col-6 mt-5">
+        <div class="card-product ClickToSlide">
+            <div class="overlaye rounded shadow-sm">
+                <div class="card-product-image-admin " style="background-image: url('http://192.168.1.114:8000{{ product.img.url }}')">
+                    <img src="http://192.168.1.114:8000{{ product.img.url }}" width="100%" height="auto">
+                </div>
+                <div class="slideTo">
+
+                    <a href="{% url 'edit_product' product.id %}" class="link-buy bg-primary"> تعديل </a>
+                    <a href="{% url 'edit_album_product' product.id %}" class="link-buy bg-info"> تعديل البوم الصور </a>
+                    
+                    <a href="{% url 'add_product_attribute' product.id %}" class="link-buy bg-primary"> خصائص </a>
+                    <a href="{% url 'add_product_discount' product.id %}" class="link-buy bg-info"> أضافة حسم </a>
+                    
+                    <a href="{% url 'delete_product' product.id %}" class="link-buy"> حذف  </a>
+                </div>
+                
+                
+            </div>
+            <p>{{ product.title }}</p>
+            <p>{{ product.price }}</p>
+            {% if product.discount_set.first %}
+            <p>{{ product.discount_set.first.percentage }}</p>
+            {% endif %}   
+        </div>
+
+
+
+
+    </div>
+
+    {% endfor %}
+</div>
+{% endblock %}
+

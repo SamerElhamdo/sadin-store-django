@@ -1,0 +1,39 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block content %}
+<h3 class="text-center mt-5"> {{ title }}</h3>
+<div class="row">
+    {% for order in orders %}
+    <div class="col-lg-4 col-md-4 col-sm-6 col-10 m-sm-0 m-auto">
+        <div class="card-order mb-3 mt-5 ">
+            <div class="overlaye rounded shadow-sm">
+                <p><span> الاسم : </span>{{ order.full_name }}</p>
+                <p><span> رقم الهاتف : </span>{{ order.phonenumber }}</p>
+                <p><span>العدد : </span>{{ order.quantity }}</p>
+                
+                <div class="card-product-image-admin " style="background-image: url('http://192.168.1.114:8000{{ order.product.img.url }}')">
+                    <img src="http://192.168.1.114:8000{{ order.product.img.url }}" width="100%" height="auto">
+                </div>
+                <p><span>أسم المنتج : </span>{{ order.product.title }}</p>
+                <p><span> سعر المنتج : </span>{{ order.product.price }}</p>
+                <a href="{% url 'order_detail' order.id %}" class="link-buy bg-success"> مشاهدة التفاصيل </a>
+
+                
+                
+            </div>
+   
+        </div>
+
+
+
+
+    </div>
+
+    {% endfor %}
+</div>
+{% endblock %}
+

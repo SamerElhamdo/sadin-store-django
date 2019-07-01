@@ -1,0 +1,248 @@
+html, body {
+    direction: rtl;
+    font-family: 'Cairo', sans-serif;
+    text-align: right;
+}
+.slideTo {
+    display: none;
+}
+
+/* عداد الطلبية يمين و يسار*/
+.input-group, .carousel-indicators {
+    direction: ltr;
+}
+
+button, input, optgroup, select, textarea {
+    font-family: 'Cairo', sans-serif;
+}
+.padding-remove {
+    padding: 0;
+}
+.margin-remove {
+    margin: 0;
+}
+.padding-margin-remove {
+    padding: 0;
+    margin: 0;
+}
+
+
+nav .navbar-brand {
+    text-align: center;
+    margin: 5px;
+}
+
+label[for='id_img'], label[for='images'], label[for='save'], .btn-custom {
+    border: solid blue 1px;
+    border-radius: 5px;
+    padding: 10px;
+    color: blue;
+    font-weight: bold;
+    transition: 0.5s;
+    
+}
+
+label[for='id_img']:hover {
+    background-color: blue;
+    color: #fff;
+    cursor: pointer;
+}
+.overlaye, .shadow {
+    overflow: hidden;
+    -webkit-box-shadow: 4px 4px 11px -3px rgba(0,0,0,0.45);
+    -moz-box-shadow: 4px 4px 11px -3px rgba(0,0,0,0.45);
+    box-shadow: 4px 4px 11px -3px rgba(0,0,0,0.45);
+}
+.dropdown-menu {
+    right: 0;
+    text-align: right;
+    width: max-content;
+
+}
+
+.box-height-width-a {
+    background-repeat: no-repeat;
+    background-size: cover;
+	position: relative;
+    width: 100%;
+}
+.box-height-width-a:before {
+
+    content: "";
+	display: block;
+    padding-top: 150%;
+	/* initial ratio of 1:2*/
+
+}.box-height-width-b {
+    background-repeat: no-repeat;
+    background-size: cover;
+	position: relative;
+    width: 100%;
+}
+.box-height-width-b:before {
+
+    content: "";
+	display: block;
+    padding-top: 100%;
+	/* initial ratio of 1:1*/
+
+}
+.card-product-image {
+
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left;
+    position: relative;
+    -webkit-animation-name: moverImage; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 16s; /* Safari 4.0 - 8.0 */
+    animation-name: moverImage;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+}
+
+.card-product-image:before {
+    content: "";
+	display: block;
+    padding-top: 150%; 	/* initial ratio of 1:1*/
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes moverImage {
+    0%   {background-position: left;}
+    50%  {background-position: right;}
+    100% {background-position: left;}
+  }
+  
+  /* Standard syntax */
+  @keyframes moverImage {
+    0%   {background-position: left;}
+    50%  {background-position: right;}
+    100% {background-position: left;}
+  }
+
+  .discount {
+    position: absolute;
+    display: block;
+    color: #fff;
+    bottom: 5px;
+    text-align: center;
+    background: #ffc107;
+    right: 5px;
+    padding: 3px 10px;
+    border-radius: 5px;
+  }
+
+.link-buy {
+    width: 100%;
+    padding: 10px;
+    background: red;
+    display: block;
+    text-align: center;
+    color: #fff;
+}
+.card-product p {
+    text-align: center;
+    padding-top: 10px;
+    margin: 0
+}
+/* start slider  */
+.slide {
+    border: 1px dashed #000;
+    overflow: hidden;
+}
+/* start ordr now */ 
+
+.card-order p {
+    padding: 10px;
+    font-weight: bold;
+    margin: 0;
+    border-bottom: 1px solid #ddd;
+}
+.card-order p:nth-child(1) {
+    border-top: 5px solid #5cb85c;
+}
+
+.card-order p span {
+    color: #5cb85c;
+    font-size: 1.2em
+}
+/* start buy now */
+
+
+.gallery img {
+    max-width: 100%;
+    height: auto !important;
+
+} 
+
+
+
+
+    
+
+
+.control-card a {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row; /* works with row or column */ 
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    background: #ddd;
+    height: 100px;
+    border-radius: 10px;
+    -webkit-box-shadow: 4px 4px 11px -3px rgba(0,0,0,0.45);
+    -moz-box-shadow: 4px 4px 11px -3px rgba(0,0,0,0.45);
+    box-shadow: 4px 4px 11px -3px rgba(0,0,0,0.45);
+    color: #fff;
+
+}
+
+
+
+
+/* start edit album image product  */
+.thumbnail {
+    width: 25%;
+    padding: 2px !important;
+}
+.thumbnail img {
+    width: 100%;
+}
+
+
+
+
+
+/* start slider  */
+.card-slider {
+    background-size: cover;
+}
+
+.card-slider:before {
+    content: "";
+    padding-top: 50%;
+    display: block;
+
+
+}
+
+ul.thumbnails li {
+    width: 48%;
+    margin: 1% !important;
+}
+
+ul.thumbnails li div {
+    width: 100%
+}
+
+/* start footer  */
+
+
+
+
+
+/*LOADER-4*/

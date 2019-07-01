@@ -1,0 +1,89 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<h3 class="text-center mt-5"> {{ title }}</h3>
+<div class="row">
+    <div class="gallery-big col-lg-6 col-md-6 col-sm-10 col-11 m-auto pt-3" >
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators m-0">
+                        {% for image in product.image_set.all %}
+
+                        {% if image == product.image_set.first %}
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        {% else %}
+                        <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter0 }}"></li>
+                        {% endif %}
+                        {% endfor %}
+                </ol>
+                <div class="carousel-inner">
+
+
+
+                    {% for image in product.image_set.all %}
+
+                    {% if image == product.image_set.first %}
+                    <div class="card-slider carousel-item active" style="background-image: url('http://192.168.1.114:8000{{ product.image_set.first.image.url }}')">
+                    </div>
+                    {% else %}
+                    <div class="card-slider carousel-item" style="background-image: url('http://192.168.1.114:8000{{ image.image.url }}')">
+                    </div>
+                    {% endif %}
+
+
+                    
+                    
+                    {% endfor %}
+
+                </div>
+        </div>
+        <p class="mt-3 "><span class="text-danger">أسم المنتج: </span>{{ product.title }}</p>
+        <p class="mt-3 "><span class="text-danger">سعر المنتج: </span>{{ product.price }}</p>
+        {% if product.discount_set.first %}
+        <p class="mt-3 "><span class="text-danger">حسم المنتج: </span>{{ product.discount_set.first.percentage }}</p>
+            
+        {% endif %}
+            
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-10 col-11 m-auto list-image pt-3">
+        <div>
+            <form method="POST" enctype="multipart/form-data" >
+                {% csrf_token %}
+                <h4>حدد صوراً لحذفها:</h4>
+                <select multiple="multiple" name="delete_list" class="image-picker show-html row">
+                    {% for image in product.image_set.all %}
+                        <option data-img-src="http://192.168.1.114:8000{{ image.image.url }}" data-img-width="200px" value="{{ image.id }}">Cute Kitten {{ image.id }}</option>
+                    {% endfor %}
+                </select>
+                <div >
+                    <label for="input-images" class="btn btn-primary mt-3">أضف صور</label>
+                    <input id="input-images" hidden type="file" name="images" multiple>
+                    <label for="images-save" class="btn btn-danger mt-3" style="float: left">إحفظ التعديلات</label>
+                    <input id=images-save class="btn btn-danger" hidden type="submit" name="submit" value="save" />
+                </div>
+                
+
+                
+            </form>
+        </div>
+    </div>
+</div>
+
+
+    
+{% endblock %}
+
+
+{% block script %}
+
+<script src="{% static 'store/js/image-picker.min.js' %}"></script>
+<script>
+    $("select").imagepicker()
+    $('.carousel').carousel({
+        interval: 3000
+    }) 
+</script>
+{% endblock %}

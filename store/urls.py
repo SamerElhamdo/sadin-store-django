@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from . import views
 
@@ -13,7 +14,7 @@ urlpatterns = [
     path('home/<category_id>', views.category_list, name='category_list'),
     path('control/list-product/', views.control_list_product, name='control_list_product'),
     path('control/add-product/', views.control_add_product, name='new_product'),
-    path('control/edit-product/<product_id>', views.ProductUpdate.as_view(), name='edit_product'),
+    path('control/edit-product/<product_id>', login_required(views.ProductUpdate.as_view()), name='edit_product'),
     path('control/edit-album-product/<product_id>', views.control_update_image_album_product, name='edit_album_product'),
     path('control/delete-product/<product_id>', views.control_delete_product, name='delete_product'),
     path('control/add-product-attribute/<product_id>', views.control_add_product_attribute, name='add_product_attribute'),

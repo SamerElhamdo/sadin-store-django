@@ -213,7 +213,7 @@ class ProductUpdate(UpdateView):
     model = Product
     form_class = ProductForm
     template_name = 'control/control-edit-product.html'
-    success_url = '/list-product/'
+    success_url = '/control/list-product/'
 
     def get_object(self):
         id_ = self.kwargs.get('product_id')

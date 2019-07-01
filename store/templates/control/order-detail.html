@@ -16,7 +16,7 @@
                 <p><span>اللون : </span>{{ order.color }}</p>
                 {% endif %}
                 {% if order.size %}
-                <p><span>اللون : </span>{{ order.size }}</p>
+                <p><span>القياس : </span>{{ order.size }}</p>
                 {% endif %}
                 <p><span>التاريخ : </span>{{ order.date|date:"d-n-Y" }} في الساعة {{ order.date|time:"g:iA" }}</p>
                 
@@ -32,7 +32,7 @@
                 {% endif %}
                 
                 {% if order.accept %}
-                <a href="{% url 'list_history_orders' %}" class="link-buy bg-danger">تم التسليم العودة الى الطلبات الجديدة </a>
+                <a href="{% url 'list_history_orders' %}" class="link-buy bg-danger">تم التسليم العودة الى  سجل الطلبات </a>
                 {% else %}
                 <a href="{% url 'order_accept' order.id %}" class="link-buy bg-danger">تأكيد التسليم</a>  
                 {% endif %}

@@ -149,7 +149,7 @@ AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
 
-AWS_DEFAULT_ACL = None
+AWS_DEFAULT_ACL = 'public-read'
 
 
 DEFAULT_FILE_STORAGE = 'mystore.storage_backends.MediaStorage'  # <-- here is where we reference it

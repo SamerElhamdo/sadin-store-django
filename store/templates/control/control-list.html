@@ -10,8 +10,8 @@
     <div class="col-lg-3 col-md-4 col-sm-6 col-6 mt-5">
         <div class="card-product ClickToSlide">
             <div class="overlaye rounded shadow-sm">
-                <div class="card-product-image-admin " style="background-image: url('https://django-sdeen-store.herokuapp.com{{ product.img.url }}')">
-                    <img src="https://django-sdeen-store.herokuapp.com{{ product.img.url }}" width="100%" height="auto">
+                <div class="card-product-image-admin " style="background-image: url('{{ product.img.url }}')">
+                    <img src="{{ product.img.url }}" width="100%" height="auto">
                 </div>
                 <div class="slideTo">
 

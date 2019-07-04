@@ -24,10 +24,10 @@
             {% for image in product.image_set.all %}
 
             {% if image == product.image_set.first %}
-            <div class="card-slider carousel-item active" style="background-image: url('https://django-sdeen-store.herokuapp.com{{ product.image_set.first.image.url }}')">
+            <div class="card-slider carousel-item active" style="background-image: url('{{ product.image_set.first.image.url }}')">
             </div>
             {% else %}
-            <div class="card-slider carousel-item" style="background-image: url('https://django-sdeen-store.herokuapp.com{{ image.image.url }}')">
+            <div class="card-slider carousel-item" style="background-image: url('{{ image.image.url }}')">
             </div>
             {% endif %}
 

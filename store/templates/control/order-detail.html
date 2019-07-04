@@ -22,8 +22,8 @@
                 
                 
 
-                <div class="card-product-image-admin " style="background-image: url('https://django-sdeen-store.herokuapp.com{{ order.product.img.url }}')">
-                <img src="https://django-sdeen-store.herokuapp.com{{ order.product.img.url }}" width="100%" height="auto">
+                <div class="card-product-image-admin " style="background-image: url('{{ order.product.img.url }}')">
+                <img src="{{ order.product.img.url }}" width="100%" height="auto">
                 </div>
                 <p><span>أسم المنتج : </span>{{ order.product.title }}</p>
                 

@@ -29,7 +29,7 @@
                 
                 <p><span> سعر المنتج : </span>{{ order.product.price }}</p>
                 {% if order.product.discount_set.first %}
-                <p><span> قيمة الخصم : </span>{{ order.product.discount_set.first.percentage }}</p>
+                <p><span> قيمة الخصم : </span>{{ order.product.discount_set.first.percentage|floatformat }}%</p>
                 {% endif %}
                 
                 {% if order.accept %}

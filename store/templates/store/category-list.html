@@ -32,7 +32,7 @@
             <div class="overlaye rounded  ">
                 <div class="card-product-image " style="background-image: url('{{ product.img.url }}')">
                     {% if product.discount_set.first %}
-                    <span class="discount">خصم {{ product.discount_set.first.percentage }}%</span>  
+                    <span class="discount">خصم {{ product.discount_set.first.percentage|floatformat }}%</span>  
                     {% endif %}
                         
                 </div>

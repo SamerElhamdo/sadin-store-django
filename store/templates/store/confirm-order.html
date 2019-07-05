@@ -29,7 +29,7 @@
                 <p><span>أسم المنتج : </span>{{ order.product.title }}</p>
                 <p><span> سعر المنتج : </span>{{ order.product.price }}</p>
                 {% if order.product.discount_set.first %}
-                <p><span> قيمة الخصم : </span>{{ order.product.discount_set.first.percentage }}</p>
+                <p><span> قيمة الخصم : </span>{{ order.product.discount_set.first.percentage|floatformat }}%</p>
                 {% endif %}
 
                 <a href="{% url 'home_view' %}" class="link-buy bg-danger">متابعة التسوق <span><i class="fas fa-store"></i></span> </a>

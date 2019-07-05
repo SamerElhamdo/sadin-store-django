@@ -28,7 +28,7 @@
             </div>
             <p>{{ product.title }}</p>
             {% if product.discount_set.first %}
-            <p class="price-discount"><span class="new-price  text-danger font-weight-bold">{{ product.discount_set.first.percentage }}ر.س</span> - <span class="price text-secondary" style="text-decoration: line-through;">{{ product.price }}ر.س</span> </p>
+            <p class="price-discount"><span class="new-price  text-danger font-weight-bold">{{ product.discount_set.first.percentage|floatformat }}%</span> - <span>{{ product.price }}ر.س</span> </p>
             {% else %}
             <p><span>{{ product.price }}ر.س</span></p>
             {% endif %}     

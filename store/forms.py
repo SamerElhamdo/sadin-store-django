@@ -61,24 +61,20 @@ class ProductDiscountForm(forms.ModelForm):
     
     class Meta:
         model = Discount
-        fields = ('product', 'title', 'percentage', 'date',)
+        fields = ('product', 'title', 'percentage',)
     
 
         widgets = {
 
             'product': forms.HiddenInput(),
-            'date': forms.DateInput(format=('%d/%m/%Y'), 
-                                             attrs={'type': 'date',
-
-                                             'min': '2019-7-5',
-                                             'placeholder':'أدخل تاريخ صالحاً'}),
+            
  
         }
 
         labels = {
-            'title': _('أسم الحسم'),
-            'percentage': _('قيمة الحسم'),
-            'date': _('تاريخ إنتهاء الحسم'),
+            'title': _('أسم الخصم'),
+            'percentage': _('قيمة الخصم'),
+
 
         }
 

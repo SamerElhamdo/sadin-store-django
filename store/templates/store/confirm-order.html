@@ -9,7 +9,7 @@
 
     <div class="col-lg-4 col-md-6 col-sm-8 col-8 m-auto">
         <div class="card-order mb-3 mt-3">
-            <div class="overlaye rounded shadow-sm">
+            <div class="overlaye rounded  ">
                 <p><span> الاسم : </span>{{ order.full_name }}</p>
                 <p><span> رقم الهاتف : </span>{{ order.phonenumber }}</p>
                 
@@ -29,7 +29,7 @@
                 <p><span>أسم المنتج : </span>{{ order.product.title }}</p>
                 <p><span> سعر المنتج : </span>{{ order.product.price }}</p>
                 {% if order.product.discount_set.first %}
-                <p><span> قيمة الحسم : </span>{{ order.product.discount_set.first.percentage }}</p>
+                <p><span> قيمة الخصم : </span>{{ order.product.discount_set.first.percentage }}</p>
                 {% endif %}
 
                 <a href="{% url 'home_view' %}" class="link-buy bg-danger">متابعة التسوق <span><i class="fas fa-store"></i></span> </a>

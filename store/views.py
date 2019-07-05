@@ -270,7 +270,7 @@ def control_add_product_attribute(request, product_id):
     return render(request, 'control/control-new-product-attribute.html', context)
 @login_required
 def control_add_product_discount(request, product_id):
-    title = 'أضافة  حسم '
+    title = 'أضافة  خصم '
     product = get_object_or_404(Product,pk=product_id)
     if request.method == 'POST':
         form = ProductDiscountForm(request.POST)

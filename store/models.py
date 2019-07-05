@@ -90,7 +90,6 @@ class Discount(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
     percentage = models.DecimalField(max_digits=19, decimal_places=2)
-    date = models.DateField(auto_now=False, auto_now_add=False)
 
     def __str__(self):
         return self.title

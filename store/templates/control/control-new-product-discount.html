@@ -23,9 +23,9 @@
                     <p class="mt-3  text-right"><span class="text-danger ">أسم المنتج: </span>{{ product.title }}</p>
                     <p class="mt-3 text-right "><span class="text-danger">سعر المنتج: </span>{{ product.price }}</p>
                     {% if product.discount_set.first %}
-                    <p class="mt-3 text-right "><span class="text-danger">الحسم الحالي: </span>{{ product.discount_set.first.percentage }}</p>
+                    <p class="mt-3 text-right "><span class="text-danger">الخصم الحالي: </span>{{ product.discount_set.first.percentage }}</p>
                     {% else %}
-                    <p class="mt-3 text-right "><span class="text-danger">الحسم الحالي: </span>لا يوجد حسم حاليا</p>
+                    <p class="mt-3 text-right "><span class="text-danger">الخصم الحالي: </span>لا يوجد خصم حاليا</p>
                     {% endif %}  
 
                 </div>
@@ -41,7 +41,7 @@
             
             
             
-            <input class="btn btn-danger"  type="submit" name="submit" value="أضافة الحسم" />
+            <input class="btn btn-danger"  type="submit" name="submit" value="أضافة الخصم" />
         </form>
     </div>
 </div>

@@ -9,7 +9,7 @@
     {% for product in products %}
     <div class="col-lg-3 col-md-4 col-sm-6 col-6 mt-5">
         <div class="card-product ClickToSlide">
-            <div class="overlaye rounded shadow-sm">
+            <div class="overlaye rounded  ">
                 <div class="card-product-image-admin " style="background-image: url('{{ product.img.url }}')">
                     <img src="{{ product.img.url }}" width="100%" height="auto">
                 </div>
@@ -19,7 +19,7 @@
                     <a href="{% url 'edit_album_product' product.id %}" class="link-buy bg-info"> تعديل البوم الصور </a>
                     
                     <a href="{% url 'add_product_attribute' product.id %}" class="link-buy bg-primary"> خصائص </a>
-                    <a href="{% url 'add_product_discount' product.id %}" class="link-buy bg-info"> أضافة حسم </a>
+                    <a href="{% url 'add_product_discount' product.id %}" class="link-buy bg-info"> أضافة خصم </a>
                     
                     <a href="{% url 'delete_product' product.id %}" class="link-buy"> حذف  </a>
                 </div>
@@ -27,10 +27,11 @@
                 
             </div>
             <p>{{ product.title }}</p>
-            <p>{{ product.price }}</p>
             {% if product.discount_set.first %}
-            <p>{{ product.discount_set.first.percentage }}</p>
-            {% endif %}   
+            <p class="price-discount"><span class="new-price  text-danger font-weight-bold">{{ product.discount_set.first.percentage }}ر.س</span> - <span class="price text-secondary" style="text-decoration: line-through;">{{ product.price }}ر.س</span> </p>
+            {% else %}
+            <p><span>{{ product.price }}ر.س</span></p>
+            {% endif %}     
         </div>
 
 

@@ -35,7 +35,9 @@
                 {% if order.accept %}
                 <a href="{% url 'list_history_orders' %}" class="link-buy bg-danger">تم التسليم العودة الى  سجل الطلبات </a>
                 {% else %}
-                <a href="{% url 'order_accept' order.id %}" class="link-buy bg-danger">تأكيد التسليم</a>  
+                <a href="{% url 'order_accept' order.id %}" class="link-buy bg-success">تأكيد التسليم</a>  
+                <a href="{% url 'control_delete_order' order.id %}" class="link-buy bg-danger">رفض و حذف الطلب</a>  
+                
                 {% endif %}
                     
                 

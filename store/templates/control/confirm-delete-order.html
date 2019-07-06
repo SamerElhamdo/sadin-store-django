@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h3 class="text-center mt-5"> {{ title }}</h3>
+<div class="row mt-3">
+
+        <div class="col-lg-6 col-md-8 col-sm-10 col-11 m-auto ">
+            <h5 class="text-danger mt-3">هل أنت متأكد من حذف هذه الطلبية؟ </h5>
+            <div class="card-order mb-3 ">
+                <div class="overlaye rounded  ">
+                    <p><span> الاسم : </span>{{ order.full_name }}</p>
+                    <p><span> رقم الهاتف : </span>{{ order.phonenumber }}</p>
+                    {% if order.color %}
+                    <p><span>اللون : </span>{{ order.color }}</p>
+                    {% endif %}
+                    {% if order.size %}
+                    <p><span>القياس : </span>{{ order.size }}</p>
+                    {% endif %}
+                    <p><span>التاريخ : </span>{{ order.date|date:"d-n-Y" }} في الساعة {{ order.date|time:"g:iA" }}</p>
+                    
+                    
+    
+                    <div class="card-product-image-admin " style="background-image: url('{{ order.product.img.url }}')">
+                    <img src="{{ order.product.img.url }}" width="100%" height="auto">
+                    </div>
+                    <p><span>أسم المنتج : </span>{{ order.product.title }}</p>
+                    
+                    <p><span> سعر المنتج : </span>{{ order.product.price }}</p>
+                    {% if order.product.discount_set.first %}
+                    <p><span> قيمة الخصم : </span>{{ order.product.discount_set.first.percentage|floatformat }}%</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="mb-3 mt-5">
+                <form id="post_form" method="post" action="" enctype="multipart/form-data">
+    
+    
+                    {% csrf_token %}
+                    <input type="submit" name="submit" value="تأكيد الحذف" class="btn btn-danger" />
+                    <a class="btn btn-success" href="{% url 'list_new_orders' %}" style="float: left;">إلغاء الحذف</a>
+                </form>
+                
+            </div>
+        </div>
+
+    </div>
+
+
+
+    
+{% endblock %}

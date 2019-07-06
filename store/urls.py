@@ -21,11 +21,14 @@ urlpatterns = [
     path('control/list-new-orders/', views.list_new_orders, name='list_new_orders'),
     path('control/list-history-orders/', views.list_history_orders, name='list_history_orders'),
     path('control/order-detail/<order_id>', views.order_detail, name='order_detail'),
+    path('control-delete-order/<order_id>', views.control_delete_order, name='control_delete_order'),
     path('control/order-accept/<order_id>', views.order_accept, name='order_accept'),
     path('control/add-product-discount/<product_id>', views.control_add_product_discount, name='add_product_discount'),
     path('product-detail/<product_id>', views.product_detail, name='product_detail'),
     path('new-order/<product_id>', views.order_form, name='order_form'),
     path('confirm-order/<order_id>', views.confirm_order, name='confirm_order'),
+    
+    
     
     
     

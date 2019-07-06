@@ -139,6 +139,16 @@ def order_detail(request, order_id):
         
     }
     return render(request, 'control/order-detail.html', context) 
+
+
+@login_required
+def control_delete_order(request, order_id):
+    title = 'حذف الطلبية   '
+    order = get_object_or_404(Order,pk=order_id)
+    if request.method == 'POST':
+        order.delete()
+        return redirect('list_new_orders')
+    return render(request, 'control/confirm-delete-order.html', {'title': title, 'order': order})
         
 
 @login_required
@@ -176,7 +186,7 @@ def control_list_product(request):
 def control_add_product(request):
     title = 'أضافة منتج'
     #ImageFormSet = modelformset_factory(Image, form=ImageForm, extra=3)
-    AttributeFormSet = modelformset_factory(ProductAttribute, form=ProductAttributeForm)
+    #AttributeFormSet = modelformset_factory(ProductAttribute, form=ProductAttributeForm)
 
     if request.method == 'POST':
         productForm = ProductForm(request.POST or None, request.FILES or None)
@@ -293,6 +303,8 @@ def control_delete_product(request, product_id):
         product.delete()
         return redirect('control_list_product')
     return render(request, 'control/confirm-delete.html', {'title': title, 'product': product})
+
+
     
     
 

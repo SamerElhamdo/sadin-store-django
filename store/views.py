@@ -195,7 +195,7 @@ def control_add_category(request):
         categoryForm = CategoryForm(request.POST or None)
         if categoryForm.is_valid():
             categoryForm.save()
-            return redirect('new_category')
+            return redirect('control_list_category')
 
     else:
 

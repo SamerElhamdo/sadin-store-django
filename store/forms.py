@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Product, ProductAttribute, Image, Order, Discount
+from .models import Category, Product, ProductAttribute, Image, Order, Discount
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 
@@ -29,7 +29,19 @@ class LoginForm(forms.ModelForm):
         }
 
 
+class CategoryForm(forms.ModelForm):
 
+    class Meta:
+        model = Category
+        fields = ('title', )
+
+
+        labels = {
+            'title': _('أسم الفئة'),
+            
+            
+            
+        }
 
 class ProductForm(forms.ModelForm):
 

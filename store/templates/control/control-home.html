@@ -5,6 +5,27 @@
 <h1 class="text-center mt-5">{{ title }}</h1>
 <div class="row">
     <div class="control-card mt-3 col-lg-4 col-md-4 col-sm-6 col-6">
+        <a class="bg-primary"  href="{% url 'new_category' %}">
+            
+            <div class="text-center">
+                    <span><i class="far fa-plus-square h2 mb-1"></i></span>
+                    <br>
+                    <span>أضافة فئة جديدة</span>
+            </div>
+        </a>
+    </div>
+    <div class="control-card mt-3 col-lg-4 col-md-4 col-sm-6 col-6">
+        <a class="bg-danger"  href="{% url 'control_list_category' %}">
+            
+            <div class="text-center">
+                    <span><i class="far fa-edit h2 mb-1"></i></span>
+                    <br>
+                    <span>تعديل الفئات </span>
+            </div>
+        </a>
+    </div>
+        
+    <div class="control-card mt-3 col-lg-4 col-md-4 col-sm-6 col-6">
         <a class="bg-primary"  href="{% url 'new_product' %}">
             
             <div class="text-center">
@@ -14,6 +35,8 @@
             </div>
         </a>
     </div>
+
+    
     <div class="control-card mt-3 col-lg-4 col-md-4 col-sm-6 col-6">
         
         <a class="bg-danger" href="{% url 'control_list_product' %}">

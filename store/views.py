@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404, redirect, HttpResponseRedirect
-from .forms import ProductForm, ProductAttributeForm, ImageForm, OrderForm, ProductDiscountForm, LoginForm
+from .forms import ProductForm, ProductAttributeForm, ImageForm, OrderForm, ProductDiscountForm, LoginForm, CategoryForm
 from .models import Category, Product, Image, Order, ProductAttribute, Discount
 from django.utils import timezone
 from django.db.models import F, DecimalField
@@ -31,10 +31,10 @@ def home_view(request):
 
     return render(request, 'store/list.html', {'title': title, 'products': query_list, 'categorys': categorys })
 
-def category_list(request, category_id ):
+def category_list(request, slug):
     categorys = Category.objects.all()
-    title = get_object_or_404(Category,pk=category_id)
-    query_list = Product.objects.filter(category_id=category_id)
+    title = get_object_or_404(Category,slug=slug)
+    query_list = Product.objects.filter(category__slug=slug)
     query = request.GET.get("q")
     if query:
         query_list = query_list.filter(title__icontains=query)
@@ -179,7 +179,60 @@ def control_list_product(request):
     products = Product.objects.all()
 
     return render(request, 'control/control-list.html', {'title': title, 'products': products})
-    
+
+@login_required
+def control_list_category(request):
+    title = 'صفحة تعديل الفئات'
+    categorys = Category.objects.all()
+
+    return render(request, 'control/control-list-category.html', {'title': title, 'categorys': categorys})
+
+
+@login_required
+def control_add_category(request):
+    title = 'أصافة فئة'
+    if request.method == 'POST':
+        categoryForm = CategoryForm(request.POST or None)
+        if categoryForm.is_valid():
+            categoryForm.save()
+            return redirect('new_category')
+
+    else:
+
+        categoryForm = CategoryForm()
+    context = {
+        'title': title,
+        'form': categoryForm,
+
+
+    }
+    return render(request, 'control/control-add-category.html', context)
+
+
+@login_required
+def control_edit_category(request, category_id):
+    title = 'أصافة فئة'
+    instance = get_object_or_404(Category,pk=category_id)
+    categoryForm = CategoryForm(request.POST or None, instance=instance)
+    if categoryForm.is_valid():
+        categoryForm.save()
+        return redirect('control_list_category')
+
+    context = {
+        'title': title,
+        'form': categoryForm,
+    }
+    return render(request, 'control/control-edit-category.html', context)
+
+@login_required
+def control_delete_category(request, category_id):
+    title = 'حذف الفئة   '
+    category = get_object_or_404(Category,pk=category_id)
+    if request.method == 'POST':
+        category.delete()
+        return redirect('control_list_category')
+    return render(request, 'control/confirm-delete-category.html', {'title': title, 'category': category})
+
 
 
 @login_required
@@ -295,6 +348,9 @@ def control_add_product_discount(request, product_id):
         'form': form,
     }
     return render(request, 'control/control-new-product-discount.html', context)
+
+
+
 @login_required
 def control_delete_product(request, product_id):
     title = 'حذف المنتج   '

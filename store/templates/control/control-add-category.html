@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<h3 class="text-center mt-5"> {{ title }}</h3>
+<form id="post_form" method="post" action="" enctype="multipart/form-data" class="col-lg-8 col-md-10 m-auto">
+
+{% csrf_token %}
+{{ form|crispy }}
+<input type="submit" name="submit" value="حفظ" class="btn btn-primary">
+</form>
+{% endblock %}

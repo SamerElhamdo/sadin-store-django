@@ -164,7 +164,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = '/control/home'
 LOGIN_URL = '/control/login'
 
-
+#ALLOW_UNICODE_SLUGS = True
+#DEFAULT_INDEX_TABLESPACE = True
 
 import dj_database_url 
 prod_db  =  dj_database_url.config(conn_max_age=500)

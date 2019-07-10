@@ -13,8 +13,22 @@ class Category(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
+        if not self.slug:
+            self.slug = slugify(self.title)
+            if not self.slug:
+                self.slug = arabic_slugify(self.title)
         super().save(*args, **kwargs)
+
+
+
+
+def arabic_slugify(str):
+    str = str.replace(" ", "-")
+    str = str.replace(",", "-")
+    str = str.replace("(", "-")
+    str = str.replace(")", "")
+    str = str.replace("؟", "")
+    return str
     
 
 class Product(models.Model):

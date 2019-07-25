@@ -37,7 +37,7 @@ class Product(models.Model):
     title = models.CharField(max_length=150)
     price = models.IntegerField(default=170)
 
-    img = models.ImageField(upload_to = 'images', blank=True, null=True)
+    img = models.ImageField(upload_to = 'images')
 
     
     def __str__(self):
